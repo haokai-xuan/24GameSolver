@@ -1,8 +1,8 @@
 CXX      := g++
-CXXFLAGS := -std=c++17 -O2 -Wall -Wextra -pedantic -MMD -MP
-LDFLAGS  := 
-TARGET   := program
-SRC      := main.cc solver.cc
+CXXFLAGS := -std=c++17 -O2 -Wall -Wextra -pedantic -MMD -MP $(shell wx-config --cxxflags --libs)
+LDFLAGS  := $(shell wx-config --libs)
+TARGET   := 24GameSolver
+SRC := $(wildcard *.cc)
 OBJ      := $(SRC:.cc=.o)
 DEP      := $(OBJ:.o=.d)
 
@@ -19,10 +19,10 @@ $(TARGET): $(OBJ)
 run: $(TARGET)
 	./$(TARGET)
 
-debug: CXXFLAGS := -std=c++17 -g -O0 -Wall -Wextra -pedantic -MMD -MP
+debug: CXXFLAGS := -std=c++17 -g -O0 -Wall -Wextra -pedantic -MMD -MP $(shell wx-config --cxxflags)
 debug: clean all
 
-release: CXXFLAGS := -std=c++17 -O3 -DNDEBUG -Wall -Wextra -pedantic -MMD -MP
+release: CXXFLAGS := -std=c++17 -O3 -DNDEBUG -Wall -Wextra -pedantic -MMD -MP $(shell wx-config --cxxflags)
 release: clean all
 
 clean:
