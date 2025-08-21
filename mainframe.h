@@ -17,6 +17,9 @@ class MainFrame : public wxFrame {
     wxSpinCtrl* num4;
     wxButton* button;
 
+    wxScrolledWindow* scrollWin;
+    wxGridSizer* gridSizer;
+
     Solver solver;
 
     void onBtnClick(wxCommandEvent& e);
