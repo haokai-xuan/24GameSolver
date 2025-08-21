@@ -1,5 +1,5 @@
-#include "solver.h"
 #include <iostream>
+#include "solver.h"
 using namespace std;
 
 vector<Solver::Node> Solver::getCandidates(Node& a, Node& b) {
